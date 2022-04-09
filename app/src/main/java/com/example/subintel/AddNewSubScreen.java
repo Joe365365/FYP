@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import java.util.Calendar;
 
 public class AddNewSubScreen extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+
 
     private TextView dateText;
     @Override
@@ -28,6 +30,8 @@ public class AddNewSubScreen extends AppCompatActivity implements DatePickerDial
 
         });
     }
+
+
 
     public void showDatePickerDialog(){
         DatePickerDialog datePickerDialog = new DatePickerDialog(
@@ -53,6 +57,7 @@ public class AddNewSubScreen extends AppCompatActivity implements DatePickerDial
         String subPrice = priceField.getText().toString();
         TextView dateField = findViewById(R.id.dateText);
         String subDate = dateField.getText().toString();
+
 
 
         Intent replyIntent = new Intent();

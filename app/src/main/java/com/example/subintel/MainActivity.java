@@ -8,7 +8,6 @@ import android.os.Bundle;
 
 import com.example.subintel.model.Sub;
 import com.example.subintel.model.viewmodel.SubViewModel;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 
@@ -28,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+
         subViewModel = ViewModelProviders.of(this).get(SubViewModel.class);
         subViewModel.getAllSubs().observe(this, new Observer<List<Sub>>(){
 
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             public void onChanged(List<Sub> subs) {
                 String listAsString = "";
                 for (Sub contact : subs) {
-                    listAsString += contact.getSubName()+"\n"+"Price: "+contact.getSubPrice()+"\n"+ "Date Due is:" +contact.getSubDate()+"\n";
+                    listAsString += contact.getSubName()+"\n"+"Price: "+contact.getSubPrice()+"\n"+ "Date Due is:" +contact.getSubDate()+"\n"+"\n";
                 }
                 TextView tv = findViewById(R.id.sub_details);
                 tv.setText(listAsString);
@@ -60,6 +60,19 @@ public class MainActivity extends AppCompatActivity {
         Intent addNewSub = new Intent(this, AddNewSubScreen.class);
         startActivityForResult(addNewSub, 0);
     }
+
+    public void loadSearch(View view) {
+        Intent searchScreen = new Intent(this, SearchScreen.class);
+        startActivityForResult(searchScreen, 0);
+    }
+
+    public void loadSettings(View view) {
+        Intent settingsScreen = new Intent(this, SettingsScreen.class);
+        startActivityForResult(settingsScreen, 0);
+    }
+
+
+
 
 
 }

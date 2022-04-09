@@ -17,4 +17,8 @@ public interface SubDao {
 
     @Query("SELECT * FROM Sub WHERE subName LIKE '%' || :subName || '%' ORDER by subName ASC")
     LiveData<List<Sub>> getSubByName(String subName);
+
+    @Query("DELETE FROM Sub")
+    void deleteAll();
+
 }

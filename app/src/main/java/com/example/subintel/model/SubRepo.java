@@ -19,10 +19,10 @@ public class SubRepo {
     }
 
     public LiveData<List<Sub>> getAllSubs() {
-        return  allSubs;
+        return allSubs;
     }
 
-    public void insert (Sub sub) {
+    public void insert(Sub sub) {
         new InsertAsyncTask(subDao).execute(sub);
     }
 
@@ -32,14 +32,35 @@ public class SubRepo {
 
     private static class InsertAsyncTask extends AsyncTask<Sub, Void, Void> {
         private SubDao asyncTaskDao;
+
+
         InsertAsyncTask(SubDao dao) {
-            asyncTaskDao= dao;
+            asyncTaskDao = dao;
         }
+
+
         @Override
         protected Void doInBackground(final Sub... subs) {
             asyncTaskDao.insert(subs[0]);
             return null;
         }
+    }
+
+    private static class deleteAllWordsAsyncTask extends AsyncTask<Void, Void, Void> {
+        private SubDao asyncTaskDao;
+
+        deleteAllWordsAsyncTask(SubDao dao) {
+            asyncTaskDao = dao;
+
+        }
+        @Override
+        protected Void doInBackground(Void... voids) {
+            asyncTaskDao.deleteAll();
+            return null;
+        }
+    }
+    public void deleteAll()  {
+        new deleteAllWordsAsyncTask(subDao).execute();
     }
 }
 

@@ -35,4 +35,6 @@ public class SubViewModel extends AndroidViewModel {
     public void insert (Sub sub) {
         repo.insert(sub);
     }
+
+    public void deleteAll() {repo.deleteAll();}
 }
